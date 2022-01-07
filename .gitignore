@@ -1,0 +1,7 @@
+dist
+node_modules
+temp
+tsdoc-metadata.json
+coverage
+protoc3
+src/protocol/*_pb.*

@@ -1,0 +1,42 @@
+{
+  "name": "protoc-gen-dcl",
+  "version": "1.0.0",
+  "description": "base component",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "bin": "dist/bin.js",
+  "scripts": {
+    "build": "make build",
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decentraland/protoc-gen-dcl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/decentraland/protoc-gen-dcl/issues"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false
+  },
+  "homepage": "https://github.com/decentraland/protoc-gen-dcl#readme",
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.3.5"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@dcl/rpc": "^1.0.0-20211230203054.commit-e3ff7a4",
+    "mitt": "^3.0.0",
+    "ts-protoc-gen": "^0.15.0"
+  }
+}
