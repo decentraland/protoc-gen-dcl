@@ -5,3 +5,6 @@ tsdoc-metadata.json
 coverage
 protoc3
 src/protocol/*_pb.*
+test/**/*.js
+test/**/*.d.ts
+test/**/*_service.ts

@@ -36,6 +36,8 @@
   ],
   "dependencies": {
     "@dcl/rpc": "^1.0.0-20211230203054.commit-e3ff7a4",
+    "@types/google-protobuf": "^3.15.5",
+    "google-protobuf": "^3.19.2",
     "mitt": "^3.0.0",
     "ts-protoc-gen": "^0.15.0"
   }

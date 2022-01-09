@@ -34,7 +34,13 @@ install: install_compiler
 	npm i -S google-protobuf@$(PROTOBUF_VERSION)
 	npm i -S @types/google-protobuf@latest
 
-test:
+test: build
+	${PROTOC} \
+		"--plugin=protoc-gen-dcl=./dist/bin.js" \
+		"-I=$(PWD)/test/codegen" \
+		"--js_out=import_style=commonjs,binary:$(PWD)/test/codegen" \
+		"--dcl_out=$(PWD)/test/codegen" \
+		"$(PWD)/test/codegen/s1.proto"
 	node_modules/.bin/jest --detectOpenHandles --colors --runInBand $(TESTARGS) --coverage
 
 test-watch:
@@ -45,13 +51,5 @@ build:
 	@mkdir -p dist
 	./node_modules/.bin/tsc -p tsconfig.json
 	chmod +x ./dist/bin.js
-
-codegen: build
-	${PROTOC} \
-		"--plugin=protoc-gen-dcl=./dist/bin.js" \
-		"-I=$(PWD)/test/codegen" \
-		"--js_out=import_style=commonjs,binary:$(PWD)/test/codegen" \
-		"--dcl_out=$(PWD)/test/codegen" \
-		"$(PWD)/test/codegen/s1.proto"
 
 .PHONY: build test codegen

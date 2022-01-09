@@ -5,7 +5,8 @@ import { ExportMap } from "ts-protoc-gen/lib/ExportMap"
 import { replaceProtoSuffix, withAllStdIn, getParameterEnums, throwError } from "ts-protoc-gen/lib/util"
 import { CodeGeneratorRequest, CodeGeneratorResponse } from "google-protobuf/google/protobuf/compiler/plugin_pb"
 import { FileDescriptorProto } from "google-protobuf/google/protobuf/descriptor_pb"
-import { generateDclRpcService } from "./codegen/dcl-rpc"
+import { generateDclRpcService } from "./codegen/client"
+import { generateServerRpcService } from "./codegen/server"
 
 /**
  * This is the ProtoC compiler plugin.
@@ -43,6 +44,10 @@ withAllStdIn((inputBuff: Buffer) => {
       codeGenResponse.addFile(thisFile)
 
       generateDclRpcService(outputFileName, fileNameToDescriptor[fileName], exportMap).forEach((file) =>
+        codeGenResponse.addFile(file)
+      )
+
+      generateServerRpcService(outputFileName, fileNameToDescriptor[fileName], exportMap).forEach((file) =>
         codeGenResponse.addFile(file)
       )
     })
